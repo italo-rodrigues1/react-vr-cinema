@@ -1,17 +1,9 @@
-
-
-import {
-  Html,
-  OrbitControls,
-  useGLTF,
-  useTexture,
-  useVideoTexture,
-} from "@react-three/drei";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
-import { DoubleSide, Vector3 } from "three";
+/* eslint-disable jsx-a11y/iframe-has-title */
+import { Html, OrbitControls, useTexture } from "@react-three/drei";
+import { Canvas, useThree } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
-import image from "./test123.jpg";
+import { DoubleSide, Vector3 } from "three";
+import image from "./assets/test123.jpg";
 
 function Model(props) {
   const group = useRef();
@@ -20,28 +12,7 @@ function Model(props) {
     <group ref={group} {...props} dispose={null}>
       <group rotation-x={-0.525} position={[5, 4, -20]}>
         <group position={[-1, 1, -1]} rotation={[Math.PI / 2, 0, 0]}>
-          <Html
-            rotation-x={-20}
-            position={[-5, 1, -1]}
-            transform
-            // occlude
-            // style={{ width: "100vW", height: "100vH" }}
-          >
-            {/* <video
-              // type="video/mp4"
-              src="https://drive.google.com/file/d/1Eqs790sK5--jrDyYPhWiiyOYmTZfllPA/preview"
-              controls
-              width="1480"
-              height="940"
-              allow="autoplay"
-            ></video> */}
-            {/* <video width="320" height="240" controls>
-              <source
-                src="https://drive.google.com/file/d/1Eqs790sK5--jrDyYPhWiiyOYmTZfllPA/preview"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video> */}
+          <Html rotation-x={-20} position={[-5, 1, -1]} transform occlude>
             <iframe
               src="https://drive.google.com/file/d/1Eqs790sK5--jrDyYPhWiiyOYmTZfllPA/preview"
               width="1480"
@@ -49,9 +20,7 @@ function Model(props) {
               allow="autoplay"
               style={{ border: "none" }}
             ></iframe>
-            {/* </div> */}
           </Html>
-          {/* </mesh> */}
         </group>
       </group>
     </group>
