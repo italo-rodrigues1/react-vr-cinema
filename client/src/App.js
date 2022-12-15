@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import { Html, OrbitControls, useTexture } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
+import openSocket from "socket.io-client";
 import { DoubleSide, Vector3 } from "three";
 import image from "./assets/test123.jpg";
 
@@ -44,6 +45,35 @@ const Scene = () => {
 };
 
 function App() {
+  // useState é um Hook do React que permite armazenar dados no estado do componente
+  const [socket, setSocket] = useState(null); // armazena a conexão socket.io
+  const [message, setMessage] = useState(""); // armazena a mensagem que será enviada
+
+  // useEffect é um Hook do React que permite executar uma função quando determinado estado do componente mudar
+  useEffect(() => {
+    // cria uma nova conexão socket.io com o servidor
+    const newSocket = openSocket(
+      "https://297f-2804-954-636-1f00-4941-c19d-b476-ab13.ngrok.io"
+    );
+
+    newSocket.on("connection", () => {
+      // console.log(data);
+    });
+
+    // define uma função que será chamada quando receber uma nova mensagem pelo websocket
+    newSocket.on("message", (data) => {
+      console.log(data);
+    });
+
+    // armazena a conexão socket no estado do componente para poder usá-la mais tarde
+    setSocket(newSocket);
+  }, []); // o segundo argumento do useEffect é uma lista de dependências, que determina quando a função será executada
+
+  // função para enviar a mensagem armazenada no estado do componente pelo websocket
+  const sendMessage = () => {
+    socket.emit("message", message);
+  };
+
   return (
     <div style={{ width: "100vW", height: "100vH", background: "#723983" }}>
       <Canvas
