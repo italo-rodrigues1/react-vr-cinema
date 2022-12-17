@@ -4,7 +4,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 import openSocket from "socket.io-client";
 import { DoubleSide, Vector3 } from "three";
-import image from "./assets/test123.jpg";
+import image from "./assets/cinema360.jpg";
 
 function Model(props) {
   const group = useRef();
