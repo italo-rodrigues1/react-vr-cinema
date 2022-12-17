@@ -15,7 +15,7 @@ function Model(props) {
         <group position={[-1, 1, -1]} rotation={[Math.PI / 2, 0, 0]}>
           <Html rotation-x={-20} position={[-5, 1, -1]} transform occlude>
             <iframe
-              src="https://drive.google.com/file/d/1Eqs790sK5--jrDyYPhWiiyOYmTZfllPA/preview"
+              src="https://drive.google.com/file/d/1ORTDlrnqSrwE3nGa-i6HPN9YP9xSrS_0/preview" 
               width="1480"
               height="940"
               allow="autoplay"
